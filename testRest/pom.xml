@@ -12,10 +12,6 @@
     <artifactId>testRest</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-arc</artifactId>
-        </dependency>
 
         <!--  Bean Validation -->
         <dependency>
