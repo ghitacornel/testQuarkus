@@ -1,7 +1,6 @@
 package org.example.model;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,10 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonRequest {
-
-    @NotNull
-    private Integer id;
+public class PersonCreateRequest {
 
     @NotBlank
     private String name;

@@ -4,7 +4,7 @@ import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import lombok.RequiredArgsConstructor;
-import org.example.model.PersonRequest;
+import org.example.model.PersonCreateRequest;
 import org.example.model.PersonResponse;
 import org.example.service.PersonService;
 
@@ -30,7 +30,7 @@ public class PersonResource {
     }
 
     @POST
-    public PersonResponse save(@Valid PersonRequest person) {
+    public PersonResponse save(@Valid PersonCreateRequest person) {
         return service.save(person);
     }
 

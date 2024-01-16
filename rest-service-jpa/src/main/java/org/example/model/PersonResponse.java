@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PersonResponse {
 
-    private Integer id;
+    private Long id;
     private String name;
 
 }
