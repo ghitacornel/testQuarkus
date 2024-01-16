@@ -11,9 +11,6 @@ import java.util.List;
 @Mapper(componentModel = "cdi")
 public interface PersonMapper {
 
-    // NOTE
-    // need to have unique method names otherwise it will generate bad code !!!
-
     @Mapping(target = "id", ignore = true)
     Person map(PersonCreateRequest person);
 
