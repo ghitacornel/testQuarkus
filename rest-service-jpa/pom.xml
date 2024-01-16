@@ -9,6 +9,6 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>testJpa</artifactId>
+    <artifactId>rest-service-jpa</artifactId>
 
 </project>

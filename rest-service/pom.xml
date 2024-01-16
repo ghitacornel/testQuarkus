@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>testRest</artifactId>
+    <artifactId>rest-service</artifactId>
 
     <dependencies>
 
