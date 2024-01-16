@@ -20,17 +20,17 @@ public class PersonService {
     private final PersonMapper mapper;
 
     public List<PersonResponse> findAll() {
-        return mapper.mapToResponse(repository.listAll());
+        return mapper.map(repository.listAll());
     }
 
     public PersonResponse findById(Long id) {
-        return mapper.mapToResponse(repository.findById(id));
+        return mapper.map(repository.findById(id));
     }
 
     public PersonResponse save(PersonCreateRequest request) {
-        Person person = mapper.mapToEntity(request);
+        Person person = mapper.map(request);
         repository.persist(person);
-        return mapper.mapToResponse(person);
+        return mapper.map(person);
     }
 
     public void deleteById(Long id) {

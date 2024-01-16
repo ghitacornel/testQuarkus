@@ -4,6 +4,7 @@ import org.example.model.Person;
 import org.example.model.PersonCreateRequest;
 import org.example.model.PersonResponse;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import java.util.List;
 
@@ -13,10 +14,11 @@ public interface PersonMapper {
     // NOTE
     // need to have unique method names otherwise it will generate bad code !!!
 
-    Person mapToEntity(PersonCreateRequest person);
+    @Mapping(target = "id", ignore = true)
+    Person map(PersonCreateRequest person);
 
-    PersonResponse mapToResponse(Person person);
+    PersonResponse map(Person person);
 
-    List<PersonResponse> mapToResponse(List<Person> people);
+    List<PersonResponse> map(List<Person> people);
 
 }
