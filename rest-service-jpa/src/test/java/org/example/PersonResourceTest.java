@@ -40,6 +40,19 @@ class PersonResourceTest {
                 .statusCode(204)
                 .body(Matchers.blankString());
 
+        // create with bad data
+        {
+            given()
+                    .contentType(ContentType.JSON)
+                    .body(PersonCreateRequest.builder()
+                            .name("")
+                            .build())
+                    .when().post("persons")
+                    .then()
+                    .statusCode(400)
+                    .body(is("{\"title\":\"Constraint Violation\",\"status\":400,\"violations\":[{\"field\":\"save.arg0.name\",\"message\":\"must not be blank\"}]}"));
+        }
+
         // create
         PersonResponse personResponse = given()
                 .contentType(ContentType.JSON)
