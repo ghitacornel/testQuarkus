@@ -8,7 +8,6 @@ public class ObjectMapperCustomizer implements io.quarkus.jackson.ObjectMapperCu
 
     public void customize(ObjectMapper mapper) {
         // customize it here
-        // mapper.registerModule(new CustomModule());
     }
 
 }
