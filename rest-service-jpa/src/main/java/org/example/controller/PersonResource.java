@@ -30,8 +30,8 @@ public class PersonResource {
     }
 
     @POST
-    public PersonResponse save(@Valid PersonCreateRequest person) {
-        return service.save(person);
+    public PersonResponse save(@Valid PersonCreateRequest request) {
+        return service.save(request);
     }
 
     @DELETE

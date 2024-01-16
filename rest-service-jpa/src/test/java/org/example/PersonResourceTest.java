@@ -53,6 +53,40 @@ class PersonResourceTest {
         Assertions.assertNotNull(personResponse.getId());
         Assertions.assertEquals("one", personResponse.getName());
 
+        // find by id expect something
+        given()
+                .when().pathParam("id", personResponse.getId()).get("persons/{id}")
+                .then()
+                .statusCode(200)
+                .body(is(personResponse.toString()));// TODO
+
+        // find all expect something
+        given()
+                .when().get("persons")
+                .then()
+                .statusCode(200)
+                .body(is("[PersonResponse(id=1, name=one)]"));
+
+        // delete by id
+        given()
+                .when().pathParam("id", personResponse.getId()).delete("persons/{id}")
+                .then()
+                .statusCode(204)
+                .body(Matchers.blankString());
+
+        // find all expect nothing
+        given()
+                .when().get("persons")
+                .then()
+                .statusCode(200)
+                .body(is("[]"));
+
+        // find by id expect nothing
+        given()
+                .when().get("persons/1")
+                .then()
+                .statusCode(204)
+                .body(Matchers.blankString());
     }
 
 }
