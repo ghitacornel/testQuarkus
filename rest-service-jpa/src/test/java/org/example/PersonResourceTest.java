@@ -58,14 +58,14 @@ class PersonResourceTest {
                 .when().pathParam("id", personResponse.getId()).get("persons/{id}")
                 .then()
                 .statusCode(200)
-                .body(is(personResponse.toString()));// TODO
+                .body(is(objectMapper.writeValueAsString(personResponse)));
 
         // find all expect something
         given()
                 .when().get("persons")
                 .then()
                 .statusCode(200)
-                .body(is("[PersonResponse(id=1, name=one)]"));
+                .body(is("[" + objectMapper.writeValueAsString(personResponse) + "]"));
 
         // delete by id
         given()

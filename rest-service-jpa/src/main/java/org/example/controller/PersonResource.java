@@ -2,7 +2,6 @@ package org.example.controller;
 
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.MediaType;
 import lombok.RequiredArgsConstructor;
 import org.example.model.PersonCreateRequest;
 import org.example.model.PersonResponse;
@@ -17,14 +16,12 @@ public class PersonResource {
     private final PersonService service;
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
     public List<PersonResponse> findAll() {
         return service.findAll();
     }
 
     @GET
     @Path("{id}")
-    @Produces(MediaType.TEXT_PLAIN)
     public PersonResponse findById(@PathParam("id") Long id) {
         return service.findById(id);
     }
