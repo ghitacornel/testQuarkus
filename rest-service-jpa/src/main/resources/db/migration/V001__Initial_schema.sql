@@ -1,5 +1,5 @@
 CREATE TABLE persons
 (
-    id   uuid primary key,
+    id   bigint auto_increment primary key,
     name varchar(50)
 );
