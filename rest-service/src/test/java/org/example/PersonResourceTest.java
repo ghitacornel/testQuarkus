@@ -21,7 +21,7 @@ class PersonResourceTest {
     @Test
     void hello() {
         given()
-                .when().get("api/person")
+                .when().get("api/persons")
                 .then()
                 .statusCode(200)
                 .body(is("Hello from RESTEasy Reactive"));
@@ -30,7 +30,7 @@ class PersonResourceTest {
     @Test
     void deleteById() {
         given()
-                .when().pathParam("id", 1).delete("api/person/{id}")
+                .when().pathParam("id", 1).delete("api/persons/{id}")
                 .then()
                 .statusCode(204)
                 .body(Matchers.blankString());
@@ -45,7 +45,7 @@ class PersonResourceTest {
                         .id(1)
                         .name("one")
                         .build())
-                .when().post("api/person")
+                .when().post("api/persons")
                 .then()
                 .statusCode(200)
                 .body(is(objectMapper.writeValueAsString(Person.builder()
@@ -65,7 +65,7 @@ class PersonResourceTest {
                         .id(1)
                         .name("one")
                         .build())
-                .when().put("api/exception")
+                .when().put("api/exceptions")
                 .then()
                 .statusCode(200)
                 .body(is(objectMapper.writeValueAsString(Person.builder()
@@ -80,7 +80,7 @@ class PersonResourceTest {
                         .id(null)
                         .name("one")
                         .build())
-                .when().put("api/exception")
+                .when().put("api/exceptions")
                 .then()
                 .statusCode(400)
                 .body(is("dummy exception"));
@@ -98,7 +98,7 @@ class PersonResourceTest {
                         .id(1)
                         .name("one")
                         .build())
-                .when().patch("api/exception")
+                .when().patch("api/exceptions")
                 .then()
                 .statusCode(200)
                 .body(is(objectMapper.writeValueAsString(Person.builder()
@@ -113,7 +113,7 @@ class PersonResourceTest {
                         .id(-1)
                         .name("")
                         .build())
-                .when().patch("api/exception")
+                .when().patch("api/exceptions")
                 .then()
                 .statusCode(400)
                 .body(is("{\"title\":\"Constraint Violation\",\"status\":400,\"violations\":[{\"field\":\"saveWithValidationException.arg0.name\",\"message\":\"must not be blank\"}]}"));

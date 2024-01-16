@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.model.Person;
 import org.example.service.PersonService;
 
-@Path("exception")
+@Path("exceptions")
 @RequiredArgsConstructor
 public class ExceptionResource {
 
