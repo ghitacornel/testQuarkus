@@ -14,7 +14,6 @@ import static org.hamcrest.CoreMatchers.is;
 @Transactional
 class PersonResourceBadDataTest {
 
-
     @Test
     @SneakyThrows
     void testBadData() {
