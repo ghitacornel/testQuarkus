@@ -18,6 +18,9 @@ public class PropertiesResource {
     @ConfigProperty(name = "property2")
     String property2;
 
+    @ConfigProperty(name = "propertyWithDefault", defaultValue = "default value")
+    String propertyWithDefault;
+
     @GET
     @Path("property1")
     @Produces(MediaType.TEXT_PLAIN)
@@ -31,4 +34,12 @@ public class PropertiesResource {
     public String property2() {
         return property2;
     }
+
+    @GET
+    @Path("propertyWithDefault")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String propertyWithDefault() {
+        return propertyWithDefault;
+    }
+
 }

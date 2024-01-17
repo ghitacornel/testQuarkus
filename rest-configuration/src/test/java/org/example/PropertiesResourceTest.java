@@ -24,6 +24,12 @@ class PropertiesResourceTest {
                 .statusCode(200)
                 .body(is("value2"));
 
+        given()
+                .when().get("properties/propertyWithDefault")
+                .then()
+                .statusCode(200)
+                .body(is("default value"));
+
     }
 
 }
