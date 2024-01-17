@@ -16,13 +16,13 @@ class YamlResourceTest {
                 .when().get("yaml/propertyA")
                 .then()
                 .statusCode(200)
-                .body(is("value1"));
+                .body(is("valueA"));
 
         given()
                 .when().get("yaml/propertyB")
                 .then()
                 .statusCode(200)
-                .body(is("value2"));
+                .body(is("valueY"));
 
         given()
                 .when().get("yaml/propertyWithDefault")

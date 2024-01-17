@@ -15,12 +15,6 @@ public class YamlResource {
     @ConfigProperty(name = "contextOne.propertyA")
     String c1propertyA;
 
-    @ConfigProperty(name = "contextOne.propertyB")
-    String c1propertyB;
-
-    @ConfigProperty(name = "contextTwo.propertyA")
-    String c2propertyA;
-
     @ConfigProperty(name = "contextTwo.propertyB")
     String c2propertyB;
 
@@ -37,8 +31,15 @@ public class YamlResource {
     @GET
     @Path("propertyB")
     @Produces(MediaType.TEXT_PLAIN)
-    public String c1propertyB() {
-        return c1propertyB;
+    public String propertyB() {
+        return c2propertyB;
+    }
+
+    @GET
+    @Path("propertyWithDefault")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String propertyWithDefault() {
+        return propertyWithDefault;
     }
 
 }
