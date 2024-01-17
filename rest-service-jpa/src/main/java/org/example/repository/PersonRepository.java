@@ -13,4 +13,9 @@ public class PersonRepository implements PanacheRepository<Person> {
         return list("#Person.findByName", name).stream().toList();
     }
 
+    public List<Person> findByNameBad(String name) {
+        return list("select p from Person p where p.name = ?1 order by p.id", name).stream().toList();
+        // just modify the query and add an order by p.id, p.notExistingProperty
+    }
+
 }

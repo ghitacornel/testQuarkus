@@ -12,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @NamedQueries({
-        @NamedQuery(name = "Person.findByName", query = "select p from Person p where p.name = ?1 order by p.id")
+        @NamedQuery(name = "Person.findByName", query = "select p from Person p where p.name like ?1 order by p.id")
 })
 public class Person {
 

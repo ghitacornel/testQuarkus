@@ -31,7 +31,14 @@ class PersonFindByNameTest {
         repository.persist(Person.builder().name("B").build());
         repository.persist(Person.builder().name("BB").build());
 
-        List<PersonResponse> persons = service.findByName("B");
-        Assertions.assertEquals("[PersonResponse(id=2, name=B)]", persons.toString());
+        {
+            List<PersonResponse> persons = service.findByName("B");
+            Assertions.assertEquals("[PersonResponse(id=2, name=B)]", persons.toString());
+        }
+
+        {
+            List<PersonResponse> persons = service.findByNameBad("B");
+            Assertions.assertEquals("[PersonResponse(id=2, name=B)]", persons.toString());
+        }
     }
 }

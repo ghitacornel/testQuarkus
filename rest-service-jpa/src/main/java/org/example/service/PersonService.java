@@ -31,6 +31,10 @@ public class PersonService {
         return mapper.map(repository.findByName(name));
     }
 
+    public List<PersonResponse> findByNameBad(String name) {
+        return mapper.map(repository.findByNameBad(name));
+    }
+
     public PersonResponse save(PersonCreateRequest request) {
         Person person = mapper.map(request);
         repository.persist(person);
