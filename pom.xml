@@ -14,6 +14,7 @@
         <module>rest-service-jpa</module>
         <module>rest-properties</module>
         <module>rest-yaml</module>
+        <module>standalone</module>
     </modules>
 
     <properties>
