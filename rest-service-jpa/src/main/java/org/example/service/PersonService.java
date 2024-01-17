@@ -27,6 +27,10 @@ public class PersonService {
         return mapper.map(repository.findById(id));
     }
 
+    public List<PersonResponse> findByName(String name) {
+        return mapper.map(repository.findByName(name));
+    }
+
     public PersonResponse save(PersonCreateRequest request) {
         Person person = mapper.map(request);
         repository.persist(person);
@@ -36,4 +40,5 @@ public class PersonService {
     public void deleteById(Long id) {
         repository.deleteById(id);
     }
+
 }

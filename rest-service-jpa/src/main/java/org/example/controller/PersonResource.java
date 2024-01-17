@@ -26,6 +26,12 @@ public class PersonResource {
         return service.findById(id);
     }
 
+    @GET
+    @Path("/name/{name}")
+    public List<PersonResponse> findByName(@PathParam("name") String name) {
+        return service.findByName(name);
+    }
+
     @POST
     public PersonResponse save(@Valid PersonCreateRequest request) {
         return service.save(request);

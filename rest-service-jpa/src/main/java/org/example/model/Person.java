@@ -11,6 +11,9 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@NamedQueries({
+        @NamedQuery(name = "Person.findByName", query = "select p from Person p where p.name = ?1 order by p.id")
+})
 public class Person {
 
     @Id
