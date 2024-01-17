@@ -12,7 +12,8 @@
     <modules>
         <module>rest-service</module>
         <module>rest-service-jpa</module>
-        <module>rest-configuration</module>
+        <module>rest-properties</module>
+        <module>rest-yaml</module>
     </modules>
 
     <properties>

@@ -1,0 +1,7 @@
+contextOne:
+    propertyA: valueA
+    propertyB: valueB
+
+contextTwo:
+  propertyA: valueX
+  propertyB: valueY
