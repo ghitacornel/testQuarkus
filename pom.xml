@@ -17,6 +17,7 @@
         <module>standalone</module>
         <module>rest-swagger</module>
         <module>rest-validation</module>
+        <module>rest-exception-handling</module>
     </modules>
 
     <properties>
