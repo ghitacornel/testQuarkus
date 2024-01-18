@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import lombok.RequiredArgsConstructor;
@@ -13,21 +14,13 @@ public class PersonResource {
     private final PersonService service;
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
-        return "Hello from RESTEasy Reactive";
-    }
-
-    @DELETE
     @Path("{id}")
-    public void deleteById(@PathParam("id") Integer id) {
-        if (id == null) {
-            throw new RuntimeException("bad luck");
-        }
+    public Person findById(@PathParam("id") Integer id) {
+        return service.findById(id);
     }
-
+    
     @POST
-    public Person save(Person person) {
+    public Person save(@Valid Person person) {
         return service.save(person);
     }
 
