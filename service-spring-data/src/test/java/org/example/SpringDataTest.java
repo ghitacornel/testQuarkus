@@ -42,6 +42,15 @@ class SpringDataTest {
         repository.save(Person.builder().id(2L).name("AA").build());
         repository.save(Person.builder().id(3L).name("B").build());
 
-        Assertions.assertEquals("[Person(id=1, name=A), Person(id=2, name=AA)]", service.findByNameLike("%A%").toString());
+        Assertions.assertEquals("[Person(id=1, name=A), Person(id=2, name=AA)]", service.findByNameLike("A").toString());
+    }
+
+    @Test
+    void findAllDistinctNames() {
+        repository.save(Person.builder().id(1L).name("A").build());
+        repository.save(Person.builder().id(2L).name("A").build());
+        repository.save(Person.builder().id(3L).name("B").build());
+
+        Assertions.assertEquals("[A, B]", service.findAllDistinctNames().toString());
     }
 }

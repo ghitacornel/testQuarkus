@@ -24,7 +24,11 @@ public class PersonService {
     }
 
     public List<Person> findByNameLike(String name) {
-        return repository.findByNameLike(name);
+        return repository.findByNameLike("%" + name + "%");
+    }
+
+    public List<String> findAllDistinctNames() {
+        return repository.findAllDistinctNames();
     }
 
 }
