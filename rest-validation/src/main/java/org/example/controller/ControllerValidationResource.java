@@ -7,23 +7,23 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import lombok.RequiredArgsConstructor;
-import org.example.model.Person;
-import org.example.service.PersonService;
+import org.example.model.RequestDto;
+import org.example.service.BusinessService;
 
 @Path("controller-validations")
 @RequiredArgsConstructor
-public class PersonResource {
+public class ControllerValidationResource {
 
-    private final PersonService service;
+    private final BusinessService service;
 
     @GET
     @Path("{id}")
-    public Person findById(@PathParam("id") @Positive Integer id) {
+    public RequestDto findById(@PathParam("id") @Positive Integer id) {
         return service.findById(id);
     }
 
     @POST
-    public Person save(@Valid Person person) {
+    public RequestDto save(@Valid RequestDto person) {
         return service.save(person);
     }
 

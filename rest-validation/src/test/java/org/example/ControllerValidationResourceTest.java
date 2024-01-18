@@ -5,7 +5,7 @@ import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
 import jakarta.inject.Inject;
 import lombok.SneakyThrows;
-import org.example.model.Person;
+import org.example.model.RequestDto;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -13,7 +13,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
-class PersonResourceTest {
+class ControllerValidationResourceTest {
 
     public static final String PATH = "controller-validations";
     @Inject
@@ -42,21 +42,21 @@ class PersonResourceTest {
 
         given()
                 .contentType(ContentType.JSON)
-                .body(Person.builder()
+                .body(RequestDto.builder()
                         .id(1)
                         .name("John")
                         .build())
                 .when().post(PATH)
                 .then()
                 .statusCode(200)
-                .body(is(objectMapper.writeValueAsString(Person.builder()
+                .body(is(objectMapper.writeValueAsString(RequestDto.builder()
                         .id(1)
                         .name("John")
                         .build())));
 
         given()
                 .contentType(ContentType.JSON)
-                .body(Person.builder()
+                .body(RequestDto.builder()
                         .id(null)
                         .name("John")
                         .build())
@@ -67,7 +67,7 @@ class PersonResourceTest {
 
         given()
                 .contentType(ContentType.JSON)
-                .body(Person.builder()
+                .body(RequestDto.builder()
                         .id(1)
                         .name("  ")
                         .build())
@@ -78,7 +78,7 @@ class PersonResourceTest {
 
         given()
                 .contentType(ContentType.JSON)
-                .body(Person.builder()
+                .body(RequestDto.builder()
                         .id(null)
                         .name("")
                         .build())
