@@ -24,4 +24,6 @@ public class PersonService {
         return person;
     }
 
+    public void saveWithValidationOnParameter(Integer id, String name) {
+    }
 }

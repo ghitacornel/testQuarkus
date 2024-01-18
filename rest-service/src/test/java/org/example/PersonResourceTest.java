@@ -120,4 +120,29 @@ class PersonResourceTest {
 
     }
 
+    @Test
+    @SneakyThrows
+    void saveWithValidationOnParameterException() {
+
+        // no exception here
+        given()
+                .pathParam("id",1)
+                .pathParam("name", "John")
+                .when().post("api/exceptions/{id}/{name")
+                .then()
+                .statusCode(200)
+                .body(Matchers.blankString());
+
+        // exception here
+        given()
+                .contentType(ContentType.JSON)
+                .pathParam("id",null)
+                .pathParam("name", " ")
+                .when().post("api/exceptions/{id}/{name}")
+                .then()
+                .statusCode(400)
+                .body(is("{\"title\":\"Constraint Violation\",\"status\":400,\"violations\":[{\"field\":\"saveWithValidationException.arg0.name\",\"message\":\"must not be blank\"}]}"));
+
+    }
+
 }
