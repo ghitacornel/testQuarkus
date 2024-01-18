@@ -26,7 +26,7 @@ public class ExceptionResource {
 
     @POST
     @Path("{id}/{name}")
-    public void saveWithValidationOnParameter(@PathParam("id") @Valid @NotNull Integer id, @PathParam("name") @Valid @NotBlank String name) {
+    public void saveWithValidationOnParameter(@PathParam("id") @NotNull Integer id, @PathParam("name") @NotBlank String name) {
         service.saveWithValidationOnParameter(id, name);
     }
 
