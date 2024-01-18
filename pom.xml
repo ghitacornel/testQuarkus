@@ -18,6 +18,7 @@
         <module>rest-swagger</module>
         <module>rest-validation</module>
         <module>rest-exception-handling</module>
+        <module>service-spring-data</module>
     </modules>
 
     <properties>
