@@ -8,6 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.example.model.RequestDto;
 import org.example.service.ServiceValidationService;
 
+/**
+ * validation performed at the service level
+ */
 @Path("service-validations")
 @RequiredArgsConstructor
 public class ServiceValidationResource {

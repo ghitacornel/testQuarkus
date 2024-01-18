@@ -10,6 +10,9 @@ import lombok.RequiredArgsConstructor;
 import org.example.model.RequestDto;
 import org.example.service.ControllerValidationService;
 
+/**
+ * validation performed at the controller level
+ */
 @Path("controller-validations")
 @RequiredArgsConstructor
 public class ControllerValidationResource {

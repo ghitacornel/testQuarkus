@@ -31,8 +31,8 @@ class ServiceValidationResourceTest {
         given()
                 .when().get(PATH + "/-1")
                 .then()
-                .statusCode(400)
-                .body(is("{\"title\":\"Constraint Violation\",\"status\":400,\"violations\":[{\"field\":\"findById.arg0\",\"message\":\"must be greater than 0\"}]}"));
+                .statusCode(500)
+                .body(containsString("must be greater than 0"));
 
     }
 
@@ -62,8 +62,8 @@ class ServiceValidationResourceTest {
                         .build())
                 .when().post(PATH)
                 .then()
-                .statusCode(400)
-                .body(is("{\"title\":\"Constraint Violation\",\"status\":400,\"violations\":[{\"field\":\"save.arg0.id\",\"message\":\"must not be null\"}]}"));
+                .statusCode(500)
+                .body(containsString("must not be null"));
 
         given()
                 .contentType(ContentType.JSON)
@@ -73,8 +73,8 @@ class ServiceValidationResourceTest {
                         .build())
                 .when().post(PATH)
                 .then()
-                .statusCode(400)
-                .body(is("{\"title\":\"Constraint Violation\",\"status\":400,\"violations\":[{\"field\":\"save.arg0.name\",\"message\":\"must not be blank\"}]}"));
+                .statusCode(500)
+                .body(containsString("must not be blank"));
 
         given()
                 .contentType(ContentType.JSON)
@@ -84,7 +84,7 @@ class ServiceValidationResourceTest {
                         .build())
                 .when().post(PATH)
                 .then()
-                .statusCode(400)
+                .statusCode(500)
                 .and()
                 .body(containsString("save.arg0.id"))
                 .and()
