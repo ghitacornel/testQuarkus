@@ -3,15 +3,11 @@ package org.example;
 import io.quarkus.test.TestTransaction;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
-import jakarta.transaction.Transactional;
-import lombok.SneakyThrows;
 import org.example.model.Person;
 import org.example.repository.PersonRepository;
 import org.example.service.PersonService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 @QuarkusTest
 @TestTransaction
@@ -40,4 +36,12 @@ class SpringDataTest {
         Assertions.assertNull(service.findByName("not matched"));
     }
 
+    @Test
+    void findByNameLike() {
+        repository.save(Person.builder().id(1L).name("A").build());
+        repository.save(Person.builder().id(2L).name("AA").build());
+        repository.save(Person.builder().id(3L).name("B").build());
+
+        Assertions.assertEquals("[Person(id=1, name=A), Person(id=2, name=AA)]", service.findByNameLike("%A%").toString());
+    }
 }

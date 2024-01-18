@@ -23,4 +23,8 @@ public class PersonService {
         return repository.findByName(name).orElse(null);
     }
 
+    public List<Person> findByNameLike(String name) {
+        return repository.findByNameLike(name);
+    }
+
 }
