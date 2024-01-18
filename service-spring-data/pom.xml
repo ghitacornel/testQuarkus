@@ -22,7 +22,7 @@
         <!-- ORM -->
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-hibernate-orm-panache</artifactId>
+            <artifactId>quarkus-spring-data-jpa</artifactId>
         </dependency>
 
         <!-- JDBC -->

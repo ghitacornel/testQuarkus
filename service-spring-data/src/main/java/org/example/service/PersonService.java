@@ -16,7 +16,7 @@ public class PersonService {
     private final PersonRepository repository;
 
     public List<Person> findAll() {
-        return repository.listAll();
+        return repository.findAll();
     }
 
 }

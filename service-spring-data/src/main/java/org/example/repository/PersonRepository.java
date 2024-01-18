@@ -1,10 +1,8 @@
 package org.example.repository;
 
-import io.quarkus.hibernate.orm.panache.PanacheRepository;
-import jakarta.inject.Singleton;
 import org.example.model.Person;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Singleton
-public class PersonRepository implements PanacheRepository<Person> {
+public interface PersonRepository extends JpaRepository<Person, Long> {
 
 }

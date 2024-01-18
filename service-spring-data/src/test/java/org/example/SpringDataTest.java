@@ -26,7 +26,7 @@ class SpringDataTest {
     @SneakyThrows
     void findAll() {
 
-        repository.persist(Person.builder().name("A").build());
+        repository.save(Person.builder().name("A").build());
 
         List<Person> all = service.findAll();
         Assertions.assertEquals("[Person(id=1, name=A)]", all.toString());
