@@ -16,6 +16,7 @@
         <module>rest-yaml</module>
         <module>standalone</module>
         <module>rest-swagger</module>
+        <module>rest-validation</module>
     </modules>
 
     <properties>

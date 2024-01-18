@@ -1,5 +1,7 @@
 package org.example.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +13,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Person {
 
+    @NotNull
     private Integer id;
+
+    @NotBlank
     private String name;
 
 }

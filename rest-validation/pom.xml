@@ -9,9 +9,15 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>rest-service</artifactId>
+    <artifactId>rest-validation</artifactId>
 
     <dependencies>
+
+        <!--  Bean Validation -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-hibernate-validator</artifactId>
+        </dependency>
 
         <!-- ObjectMapper-->
         <dependency>
