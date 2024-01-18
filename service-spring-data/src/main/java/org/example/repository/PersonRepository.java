@@ -1,6 +1,7 @@
 package org.example.repository;
 
 import org.example.model.Person;
+import org.example.model.PersonProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -18,5 +19,8 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 
     @Query("select distinct p.name from Person p order by name")
     List<String> findAllDistinctNames();
+
+    @Query("select id, name from Person p")
+    List<PersonProjection> findAllProjections();
 
 }

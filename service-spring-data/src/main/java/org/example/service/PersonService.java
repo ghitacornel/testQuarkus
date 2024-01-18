@@ -4,6 +4,7 @@ import jakarta.inject.Singleton;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.model.Person;
+import org.example.model.PersonProjection;
 import org.example.repository.PersonRepository;
 
 import java.util.List;
@@ -29,6 +30,10 @@ public class PersonService {
 
     public List<String> findAllDistinctNames() {
         return repository.findAllDistinctNames();
+    }
+
+    public List<PersonProjection> findAllProjections() {
+        return repository.findAllProjections();
     }
 
 }

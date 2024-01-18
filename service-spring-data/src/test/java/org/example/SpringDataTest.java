@@ -4,6 +4,7 @@ import io.quarkus.test.TestTransaction;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 import org.example.model.Person;
+import org.example.model.PersonProjection;
 import org.example.repository.PersonRepository;
 import org.example.service.PersonService;
 import org.junit.jupiter.api.Assertions;
@@ -52,5 +53,14 @@ class SpringDataTest {
         repository.save(Person.builder().id(3L).name("B").build());
 
         Assertions.assertEquals("[A, B]", service.findAllDistinctNames().toString());
+    }
+
+    @Test
+    void findAllProjections() {
+        repository.save(Person.builder().id(1L).name("A").build());
+        repository.save(Person.builder().id(2L).name("B").build());
+        repository.save(Person.builder().id(3L).name("C").build());
+
+        Assertions.assertEquals("[A, B, C]", service.findAllProjections().stream().map(PersonProjection::getName).toList().toString());
     }
 }
