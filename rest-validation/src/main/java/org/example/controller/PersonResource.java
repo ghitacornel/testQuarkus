@@ -1,13 +1,15 @@
 package org.example.controller;
 
 import jakarta.validation.Valid;
-import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.example.model.Person;
 import org.example.service.PersonService;
 
-@Path("persons")
+@Path("controller-validations")
 @RequiredArgsConstructor
 public class PersonResource {
 
@@ -18,7 +20,7 @@ public class PersonResource {
     public Person findById(@PathParam("id") Integer id) {
         return service.findById(id);
     }
-    
+
     @POST
     public Person save(@Valid Person person) {
         return service.save(person);

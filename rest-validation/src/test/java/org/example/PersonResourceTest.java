@@ -14,6 +14,7 @@ import static org.hamcrest.CoreMatchers.is;
 @QuarkusTest
 class PersonResourceTest {
 
+    public static final String PATH = "controller-validations";
     @Inject
     ObjectMapper objectMapper;
 
@@ -21,7 +22,7 @@ class PersonResourceTest {
     void findById() {
 
         given()
-                .when().get("persons/1")
+                .when().get(PATH + "/1")
                 .then()
                 .statusCode(200)
                 .body(is("{\"id\":1,\"name\":\"John\"}"));
@@ -38,7 +39,7 @@ class PersonResourceTest {
                         .id(1)
                         .name("John")
                         .build())
-                .when().post("persons")
+                .when().post(PATH)
                 .then()
                 .statusCode(200)
                 .body(is(objectMapper.writeValueAsString(Person.builder()
@@ -52,7 +53,7 @@ class PersonResourceTest {
                         .id(null)
                         .name("John")
                         .build())
-                .when().post("persons")
+                .when().post(PATH)
                 .then()
                 .statusCode(400)
                 .body(is("{\"title\":\"Constraint Violation\",\"status\":400,\"violations\":[{\"field\":\"save.arg0.id\",\"message\":\"must not be null\"}]}"));
@@ -63,7 +64,7 @@ class PersonResourceTest {
                         .id(1)
                         .name("  ")
                         .build())
-                .when().post("persons")
+                .when().post(PATH)
                 .then()
                 .statusCode(400)
                 .body(is("{\"title\":\"Constraint Violation\",\"status\":400,\"violations\":[{\"field\":\"save.arg0.name\",\"message\":\"must not be blank\"}]}"));
@@ -74,7 +75,7 @@ class PersonResourceTest {
                         .id(null)
                         .name("")
                         .build())
-                .when().post("persons")
+                .when().post(PATH)
                 .then()
                 .statusCode(400)
                 .and()
