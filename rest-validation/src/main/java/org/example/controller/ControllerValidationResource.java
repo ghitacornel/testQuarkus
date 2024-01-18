@@ -8,13 +8,13 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.example.model.RequestDto;
-import org.example.service.BusinessService;
+import org.example.service.ControllerValidationService;
 
 @Path("controller-validations")
 @RequiredArgsConstructor
 public class ControllerValidationResource {
 
-    private final BusinessService service;
+    private final ControllerValidationService service;
 
     @GET
     @Path("{id}")

@@ -4,7 +4,7 @@ import jakarta.inject.Singleton;
 import org.example.model.RequestDto;
 
 @Singleton
-public class BusinessService {
+public class ControllerValidationService {
 
     public RequestDto findById(Integer id) {
         return new RequestDto(1, "John");
