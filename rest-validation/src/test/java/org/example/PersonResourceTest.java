@@ -67,6 +67,20 @@ class PersonResourceTest {
                 .then()
                 .statusCode(400)
                 .body(is("{\"title\":\"Constraint Violation\",\"status\":400,\"violations\":[{\"field\":\"save.arg0.name\",\"message\":\"must not be blank\"}]}"));
+
+        given()
+                .contentType(ContentType.JSON)
+                .body(Person.builder()
+                        .id(null)
+                        .name("")
+                        .build())
+                .when().post("persons")
+                .then()
+                .statusCode(400)
+                .and()
+                .body(is("{\"title\":\"Constraint Violation\",\"status\":400,\"violations\":[{\"field\":\"save.arg0.id\",\"message\":\"must not be null\"},{\"field\":\"save.arg0.name\",\"message\":\"must not be blank\"}]}"));
+
+
     }
 
 }
