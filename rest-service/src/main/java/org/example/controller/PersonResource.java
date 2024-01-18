@@ -21,7 +21,7 @@ public class PersonResource {
     @DELETE
     @Path("{id}")
     public void deleteById(@PathParam("id") Integer id) {
-        if (id == null) {
+        if (id < 0) {
             throw new RuntimeException("bad luck");
         }
     }

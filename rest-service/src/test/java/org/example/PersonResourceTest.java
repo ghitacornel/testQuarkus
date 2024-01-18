@@ -34,6 +34,12 @@ class PersonResourceTest {
                 .then()
                 .statusCode(204)
                 .body(Matchers.blankString());
+
+        given()
+                .when().pathParam("id", -1).delete("api/persons/{id}")
+                .then()
+                .statusCode(500)
+                .body(Matchers.containsString("bad luck"));
     }
 
     @Test
