@@ -1,5 +1,6 @@
 package org.example;
 
+import io.quarkus.test.TestTransaction;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -13,7 +14,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 @QuarkusTest
-@Transactional
+@TestTransaction
 class SpringDataTest {
 
     @Inject
@@ -23,13 +24,20 @@ class SpringDataTest {
     PersonService service;
 
     @Test
-    @SneakyThrows
     void findAll() {
 
-        repository.save(Person.builder().name("A").build());
+        repository.save(Person.builder().id(1L).name("A").build());
 
-        List<Person> all = service.findAll();
-        Assertions.assertEquals("[Person(id=1, name=A)]", all.toString());
-
+        Assertions.assertEquals("[Person(id=1, name=A)]", service.findAll().toString());
     }
+
+    @Test
+    void findByName() {
+        repository.save(Person.builder().id(1L).name("A").build());
+        repository.save(Person.builder().id(2L).name("B").build());
+
+        Assertions.assertEquals("Person(id=1, name=A)", service.findByName("A").toString());
+        Assertions.assertNull(service.findByName("not matched"));
+    }
+
 }

@@ -19,4 +19,8 @@ public class PersonService {
         return repository.findAll();
     }
 
+    public Person findByName(String name) {
+        return repository.findByName(name).orElse(null);
+    }
+
 }
