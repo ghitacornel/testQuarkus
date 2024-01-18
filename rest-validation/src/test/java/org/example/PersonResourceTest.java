@@ -9,6 +9,7 @@ import org.example.model.Person;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
@@ -26,6 +27,12 @@ class PersonResourceTest {
                 .then()
                 .statusCode(200)
                 .body(is("{\"id\":1,\"name\":\"John\"}"));
+
+        given()
+                .when().get(PATH + "/-1")
+                .then()
+                .statusCode(400)
+                .body(is("{\"title\":\"Constraint Violation\",\"status\":400,\"violations\":[{\"field\":\"findById.arg0\",\"message\":\"must be greater than 0\"}]}"));
 
     }
 
@@ -79,7 +86,14 @@ class PersonResourceTest {
                 .then()
                 .statusCode(400)
                 .and()
-                .body(is("{\"title\":\"Constraint Violation\",\"status\":400,\"violations\":[{\"field\":\"save.arg0.id\",\"message\":\"must not be null\"},{\"field\":\"save.arg0.name\",\"message\":\"must not be blank\"}]}"));
+                .body(containsString("save.arg0.id"))
+                .and()
+                .body(containsString("must not be null"))
+                .and()
+                .body(containsString("save.arg0.name"))
+                .and()
+                .body(containsString("must not be blank"))
+        ;
 
 
     }

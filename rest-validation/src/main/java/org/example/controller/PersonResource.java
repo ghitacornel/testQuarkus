@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -17,7 +18,7 @@ public class PersonResource {
 
     @GET
     @Path("{id}")
-    public Person findById(@PathParam("id") Integer id) {
+    public Person findById(@PathParam("id") @Positive Integer id) {
         return service.findById(id);
     }
 
