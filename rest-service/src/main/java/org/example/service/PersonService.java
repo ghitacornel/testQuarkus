@@ -1,7 +1,6 @@
 package org.example.service;
 
 import jakarta.inject.Singleton;
-import org.example.exceptions.BusinessException;
 import org.example.model.Person;
 
 @Singleton
@@ -13,17 +12,4 @@ public class PersonService {
         return person;
     }
 
-    public Person saveWithException(Person person) {
-        if (person.getId() == null) {
-            throw new BusinessException("dummy exception");
-        }
-        return person;
-    }
-
-    public Person saveWithValidationException(Person person) {
-        return person;
-    }
-
-    public void saveWithValidationOnParameter(Integer id, String name) {
-    }
 }

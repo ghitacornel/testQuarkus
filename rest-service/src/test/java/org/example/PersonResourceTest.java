@@ -54,37 +54,4 @@ class PersonResourceTest {
                         .build())));
     }
 
-    @Test
-    @SneakyThrows
-    void saveWithException() {
-
-        // no exception here
-        given()
-                .contentType(ContentType.JSON)
-                .body(Person.builder()
-                        .id(1)
-                        .name("one")
-                        .build())
-                .when().put("api/exceptions")
-                .then()
-                .statusCode(200)
-                .body(is(objectMapper.writeValueAsString(Person.builder()
-                        .id(1)
-                        .name("one")
-                        .build())));
-
-        // exception here
-        given()
-                .contentType(ContentType.JSON)
-                .body(Person.builder()
-                        .id(null)
-                        .name("one")
-                        .build())
-                .when().put("api/exceptions")
-                .then()
-                .statusCode(400)
-                .body(is("dummy exception"));
-
-    }
-
 }
