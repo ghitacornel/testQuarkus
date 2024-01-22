@@ -19,6 +19,7 @@
         <module>rest-validation</module>
         <module>rest-exception-handling</module>
         <module>service-spring-data</module>
+        <module>rest-jms</module>
     </modules>
 
     <properties>
