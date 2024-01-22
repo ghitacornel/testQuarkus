@@ -4,7 +4,7 @@ import com.rabbitmq.client.BuiltinExchangeType;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import io.quarkiverse.rabbitmqclient.RabbitMQClient;
-import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 
@@ -14,14 +14,9 @@ public class JmsConfig {
     @Inject
     RabbitMQClient rabbitMQClient;
 
-    public Channel channel;
-
-    @PostConstruct
-    public void onApplicationStart() {
-        setupQueues();
-    }
-
-    private void setupQueues() {
+    @Produces
+    public Channel setupQueues() {
+        Channel channel;
         try {
             // create a connection
             Connection connection = rabbitMQClient.connect();
@@ -31,6 +26,7 @@ public class JmsConfig {
             channel.exchangeDeclare("test", BuiltinExchangeType.TOPIC, true);
             channel.queueDeclare("sample.queue", true, false, false, null);
             channel.queueBind("sample.queue", "test", "#");
+            return channel;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
