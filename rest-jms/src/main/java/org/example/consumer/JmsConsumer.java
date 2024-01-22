@@ -4,7 +4,8 @@ import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
-import jakarta.annotation.PostConstruct;
+import io.quarkus.runtime.StartupEvent;
+import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
@@ -19,8 +20,7 @@ public class JmsConsumer {
     @Inject
     Channel channel;
 
-    @PostConstruct
-    private void setupReceiving() throws IOException {
+    public void onApplicationStart(@Observes StartupEvent event) throws IOException {
 
         // register a consumer for messages
         channel.basicConsume("sample.queue", true, new DefaultConsumer(channel) {
