@@ -13,10 +13,12 @@
 
     <dependencies>
 
-        <!-- RabbitMQ -->
+        <!-- JMS -->
+        <!-- https://mvnrepository.com/artifact/org.amqphub.quarkus/quarkus-qpid-jms -->
         <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-smallrye-reactive-messaging-rabbitmq</artifactId>
+            <groupId>io.quarkiverse.rabbitmqclient</groupId>
+            <artifactId>quarkus-rabbitmq-client</artifactId>
+            <version>3.0.1</version>
         </dependency>
 
         <!-- ObjectMapper-->
